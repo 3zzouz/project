@@ -68,7 +68,7 @@ include 'utilities/layout.php';
                 <div class="col-lg-4 col-sm-6">
                     <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
                         <div class="ts_text">
-                            <h4>Aziz Dhouibi</h4>
+                            <h4>Mohamed Aziz Dhouibi</h4>
                             <span>Gym Trainer</span>
                             <p>AzizDhouibi@gmail.com</p>
 
