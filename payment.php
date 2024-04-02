@@ -1,4 +1,3 @@
-
 <?php
 
 session_start();
@@ -34,10 +33,9 @@ try {
     http_response_code(303);
     header('Location: ' . $checkout_session->url);
 } catch (\Stripe\Exception\ApiErrorException $e) {
-    // Log the error for debugging purposes
+
     error_log($e->getMessage());
 
-    // Redirect to an error page
     header('Location: error.php');
     exit;
 }

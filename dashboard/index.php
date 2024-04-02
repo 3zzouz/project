@@ -15,45 +15,40 @@ if (!isset($_SESSION['user'])) {
     $offcl = $offre_cl->findById("$id")->getData();
   }
 }
+$page_title = "Welcome";
+$stylesheets = [
+  '../node_modules/bootstrap/dist/css/bootstrap.min.css',
+  'https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap'
+];
+$scripts = [
 
-?>
-
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome </title>
-  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-  <script src="dashboard.js" defer></script>
-  <style>
+];
+$inline_style = '
     * {
-      font-family: "Muli", sans-serif !important;
+        font-family: "Muli", sans-serif !important;
     }
 
     .form-control:focus {
-      border-color: orangered;
-      box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
+        border-color: orangered;
+        box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
     }
 
     .h2 {
-
-      font-family: "Muli", sans-serif !important;
+        font-family: "Muli", sans-serif !important;
     }
 
     .progress {
-      margin-top: 20px;
-      margin-bottom: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
     .suivie {
-      margin-top: 50px;
+        margin-top: 50px;
     }
-  </style>
-</head>
+';
+include '../utilities/layout.php';
+?>
+
 
 <body class="container">
   <div class="container w-75 mt-3">
@@ -125,8 +120,8 @@ if (!isset($_SESSION['user'])) {
       </div>
     <?php endforeach; ?>
   <?php endif; ?>
-
+  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+  <script src="dashboard.js" defer></script>
 </body>
-
 
 </html>

@@ -6,17 +6,17 @@ use Dompdf\Dompdf;
 
 if (!isset($_SESSION['user'])) {
     header('Location: ../login/user/index.php');
-  } else {
-$id = $_SESSION['user']['id'];
-$client = new client();
-$client = $client->findById($id)->getData()[0];
-$offre_cl = new offreClient();
-$test = $offre_cl->exist("$id")->getStatus();
-if (!$test) {
-    header('Location: index.php');
 } else {
-$dompdf = new Dompdf();
-$html = '
+    $id = $_SESSION['user']['id'];
+    $client = new client();
+    $client = $client->findById($id)->getData()[0];
+    $offre_cl = new offreClient();
+    $test = $offre_cl->exist("$id")->getStatus();
+    if (!$test) {
+        header('Location: index.php');
+    } else {
+        $dompdf = new Dompdf();
+        $html = '
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,9 +92,9 @@ $html = '
 ';
 
 
-$dompdf->loadHtml($html);
-$dompdf->setPaper('A4', 'landscape');
-$dompdf->render();
-$dompdf->stream();
-
-    }}
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream();
+    }
+}

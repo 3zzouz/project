@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user']) && !isset($_SESSION['user']['email'])) {
-    header('Location: ../../user.php');
+    header('Location: ../../index.php');
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,5 +30,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 echo "Invalid request";
-header('Location: ../../index.html');
+header('Location: ../../index.php');
 exit();

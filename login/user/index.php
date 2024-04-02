@@ -1,53 +1,47 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-  header('Location: ../../user.php');
+  header('Location: ../../index.php');
   exit();
-} ?>
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Log In</title>
-  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../../css/mdb.dark.min.css" />
-  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
-</head>
-<style>
-  * {
-    font-family: "Oswald", sans-serif !important;
-  }
-
-  .form-check-input[type="checkbox"]:checked {
-    background-color: orangered;
-  }
-
-  .form-check-input[type="checkbox"]:checked:focus {
-    background-color: orangered;
-    box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
-    /* Adjust color as needed */
-  }
-
-  .form-control:focus,
-  #validationCustomUsername:focus {
-    border-color: orangered;
-    box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
-  }
-
-  .btn {
-    background-color: orangered;
-    color: white;
-
-    &:hover {
-      background-color: orangered;
-      color: white;
+}
+$page_title = "Log In";
+$stylesheets = [
+  'https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap',
+  '../../css/mdb.dark.min.css',
+  '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+];
+$scripts = [];
+$inline_style = '
+    * {
+        font-family: "Oswald", sans-serif !important;
     }
-  }
-</style>
-<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-<script src="userLogin.js" defer></script>
+
+    .form-check-input[type="checkbox"]:checked {
+        background-color: orangered;
+    }
+
+    .form-check-input[type="checkbox"]:checked:focus {
+        background-color: orangered;
+        box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25); /* Adjust color as needed */
+    }
+
+    .form-control:focus,
+    #validationCustomUsername:focus {
+        border-color: orangered;
+        box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
+    }
+
+    .btn {
+        background-color: orangered;
+        color: white;
+        &:hover {
+            background-color: orangered;
+            color: white;
+        }
+    }
+';
+include '../../utilities/layout.php';
+?>
 
 <body>
   <section class="vh-100 bg-image" style="
@@ -85,7 +79,7 @@ if (isset($_SESSION['user'])) {
                   </div>
                   <p class="text-center" style="margin-top: 1rem; margin-bottom: -5px">
                     Not yet a member ?
-                    <a href="../../signup/index.html" style="text-decoration: none; color: orangered">Sign Up</a>
+                    <a href="../../signup/index.php" style="text-decoration: none; color: orangered">Sign Up</a>
                   </p>
                 </form>
               </div>
@@ -95,6 +89,8 @@ if (isset($_SESSION['user'])) {
       </div>
     </div>
   </section>
+  <script src='https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js' defer></script>
+  <script src='userLogin.js' defer></script>
 </body>
 
 </html>

@@ -1,36 +1,27 @@
 <?php
 session_start();
-if (isset($_SESSION['user']) && !isset($_SESSION['user']['email'])) {
-  header('Location: ../../user.php');
+if (isset($_SESSION['admin'])) {
+  header('Location: ../../admin page/index.php');
   exit();
 }
-?>
+$page_title = "Admin Log In";
+$stylesheets = [
+  'https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css',
+  'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css',
+  '../../css/bootstrap.admin.min.css',
+  '../../css/styleAdminLogin.css'
+];
+$scripts = [
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <title>Admin Login</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="keywords" />
-  <meta content="" name="description" />
-
-  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
-  <link href="../../css/bootstrap.admin.min.css" rel="stylesheet" />
-
-  <link href="../../css/styleAdminLogin.css" rel="stylesheet" />
-  <style>
+];
+$inline_style = '
     * {
-      font-family: "Oswald", sans-serif !important;
+        font-family: "Oswald", sans-serif !important;
     }
-  </style>
-  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-  <script src="adminLogin.js" defer></script>
-</head>
+';
+include '../../utilities/layout.php';
+?>
 
 <body>
   <div class="container-fluid position-relative d-flex p-0">
@@ -46,7 +37,7 @@ if (isset($_SESSION['user']) && !isset($_SESSION['user']['email'])) {
         <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
           <form id="form" method="post" action="login.php" class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3 js-form">
             <div class="d-flex align-items-center justify-content-between mb-3">
-              <a href="../../index.html" class="">
+              <a href="../../index.php" class="">
                 <h3 class="text-primary">
                   <img src="../../img/logo.png" alt="Gym Logo" style="width: 75%" />
                 </h3>
@@ -81,6 +72,8 @@ if (isset($_SESSION['user']) && !isset($_SESSION['user']['email'])) {
     };
     spinner();
   </script>
+  <script src='https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js' defer></script>
+  <script src='adminLogin.js' defer></script>
 </body>
 
 </html>

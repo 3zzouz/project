@@ -1,36 +1,25 @@
 <?php
 if (isset($_SESSION['user'])) {
-    header('Location: ../../user.php');
+    header('Location: ../../index.php');
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['email'])) {
-
-        echo "Email is required";
-        header('Location: ../../signup/index.php');
-        exit();
+        die("Email is required");
     }
     if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 
-        echo "Email is invalid";
-        header('Location: ../../signup/index.php');
-        exit();
+        die("Email is invalid");
     }
     if (!isset($_POST['password'])) {
-        echo "Password is required";
-        header('Location: ../../signup/index.php');
-        exit();
+        die("Password is required");
     }
     if (strlen($_POST['password']) < 8 || strlen($_POST['password']) > 20) {
-        echo "Password must be at least 8 characters long and less than 20 characters long";
-        header('Location: ../../signup/index.php');
-        exit();
+        die("Password must be between 8 and 20 characters");
     }
     $regex = '/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/';
     if (!preg_match($regex, $_POST['password'])) {
-        echo "Password must contain at least one uppercase letter, one lowercase letter, and one number";
-        header('Location: ../../signup/index.php');
-        exit();
+        die("Password must contain at least one number and one uppercase and lowercase letter");
     }
     include_once '../../utilities/autoloader.php';
     $client = new client();
@@ -38,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = htmlentities($_POST['password']);
     $res = $client->login($email, $password);
     if ($res->getStatus()) {
-        header('Location: ../../user.php');
+        header('Location: ../../index.php');
         exit();
     } else {
         $message = json_encode($res->getMessage());
@@ -50,6 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 } else {
     echo "Invalid request";
-    header('Refresh:5 url: ../../index.html');
+    header('Refresh:5 url: ../../index.php');
     exit();
 }

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-    header('Location: ../user.php');
+    header('Location: ../index.php');
     exit();
 }
 include_once '../utilities/autoloader.php';
@@ -91,6 +91,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
     $emailToSend = $email;
+    $subject = "Welcome $name !";
+    $message = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                width: 80%;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            .header {
+                text-align: center;
+                color: #444;
+            }
+            .content {
+                margin-top: 20px;
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="header">Welcome to Our Community!</h1>
+            <div class="content">
+                <p>Dear ' . $name . ',</p>
+                <p>We\'re excited to have you join our community. You\'re on your way to super-productivity and beyond!</p>
+                <p>Should you have any questions or need assistance with anything, feel free to reply to this email. We\'re here to help!</p>
+                <p>Best,</p>
+                <p>Dhouibi Mohamed Aziz</p>
+                <p>Community Manager</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    ';
     include_once '../utilities/sendMail.php';
     echo "You have successfully signed up";
     header('Location: ../login/user/index.php');
