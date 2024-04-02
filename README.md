@@ -24,14 +24,12 @@ The Gym Management Website is designed to streamline the operations of a fitness
 
 ## Usage
 
-Upon accessing the website, users will be directed to the appropriate interface based on their role (admin or client). Administrators will have access to the dashboard for managing all aspects of the gym, while members can view their details, schedules, and make payments.
+Upon accessing the website, users will be directed to the appropriate interface based on their role (admin or client). Administrators will have access to the dashboard (/admin%20page/index.php) for managing all aspects of the gym, while members can view their details, schedules, and make payments.
 
 ## Testing
 
 ### Payment
 
-- Install composer and stripe: [https://getcomposer.org/download/](https://getcomposer.org/download/)
-- After installing composer you should run this command in your project directory: `composer require stripe/stripe-php`
 - When testing the payment procedure you should use this number for the card information: 4242 4242 4242 4242
 
 ### Admin Interface
