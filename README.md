@@ -1,6 +1,7 @@
 # Gym Management Website
 
 The Gym Management Website is designed to streamline the operations of a fitness center. It provides a platform for managing members, scheduling classes for the admin and offers the possibility to the clients to create accounts, pay offers and more.
+The Website is available online on `http://tp-gym-php.great-site.net/project`
 
 ## Features
 
